@@ -9,9 +9,12 @@ import ProfilePage from './pages/ProfilePage';
 import SpacesPage from './pages/SpacesPage';
 import LoginPage from './pages/LoginPage';
 
+// Получаем базовый путь для GitHub Pages из переменной homepage в package.json
+const basename = process.env.PUBLIC_URL || '';
+
 const App: React.FC = () => {
   return (
-    <Router>
+    <Router basename={basename}>
       <UserProvider>
         <SpaceProvider>
           <Global
