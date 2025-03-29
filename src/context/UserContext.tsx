@@ -2,6 +2,9 @@ import React, { createContext, useContext, useState, useEffect, ReactNode } from
 import { User } from '../types';
 import { usersApi } from '../services/api';
 
+// Получаем базовый URL для ресурсов
+const PUBLIC_URL = process.env.PUBLIC_URL || '';
+
 interface UserContextProps {
     user: User | null;
     loading: boolean;
@@ -52,13 +55,13 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
             // Пока используем моковые данные
 
             // Определяем аватарку в зависимости от пользователя
-            let avatarPath = '/base192.jpg'; // По умолчанию используем base192.jpg
+            let avatarPath = `${PUBLIC_URL}/base192.jpg`; // По умолчанию используем base192.jpg
             if (username.toLowerCase() === 'alice') {
-                avatarPath = '/alice192.jpg';
+                avatarPath = `${PUBLIC_URL}/alice192.jpg`;
             } else if (username.toLowerCase() === 'ben') {
-                avatarPath = '/kapi192.jpg';
+                avatarPath = `${PUBLIC_URL}/kapi192.jpg`;
             } else if (username.toLowerCase() === 'xitter') {
-                avatarPath = '/logo192.png';
+                avatarPath = `${PUBLIC_URL}/logo192.png`;
             }
 
             const mockUser: User = {
@@ -71,6 +74,7 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
             // Имитация хранения токена в localStorage
             localStorage.setItem('authToken', 'mock-auth-token');
+            localStorage.setItem('username', username); // Сохраняем имя пользователя
 
             setUser(mockUser);
         } catch (err) {

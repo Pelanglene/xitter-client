@@ -10,6 +10,9 @@ import { EditIcon, CameraIcon } from '../components/Icons';
 import { usersApi } from '../services/api';
 import { User } from '../types';
 
+// Получаем базовый URL для ресурсов
+const PUBLIC_URL = process.env.PUBLIC_URL || '';
+
 const ProfilePage: React.FC = () => {
   const { username } = useParams<{ username?: string }>();
   const { user, updateUser } = useUser();
@@ -36,7 +39,7 @@ const ProfilePage: React.FC = () => {
               id: 'alice',
               username: 'alice',
               displayName: 'Alice',
-              avatar: '/alice192.jpg',
+              avatar: `${PUBLIC_URL}/alice192.jpg`,
               homeSpace: 'xitter-community'
             };
           } else if (username.toLowerCase() === 'bob') {
@@ -44,7 +47,7 @@ const ProfilePage: React.FC = () => {
               id: 'bob',
               username: 'bob',
               displayName: 'Bob',
-              avatar: '/base192.jpg',
+              avatar: `${PUBLIC_URL}/base192.jpg`,
               homeSpace: 'xitter-community'
             };
           } else if (username.toLowerCase() === 'xitter') {
@@ -52,7 +55,7 @@ const ProfilePage: React.FC = () => {
               id: 'xitter',
               username: 'xitter',
               displayName: 'Xitter',
-              avatar: '/logo192.png',
+              avatar: `${PUBLIC_URL}/logo192.png`,
               homeSpace: 'xitter-community'
             };
           } else if (username.toLowerCase() === 'ben') {
@@ -60,7 +63,7 @@ const ProfilePage: React.FC = () => {
               id: 'ben',
               username: 'ben',
               displayName: 'Ben',
-              avatar: '/kapi192.jpg',
+              avatar: `${PUBLIC_URL}/kapi192.jpg`,
               homeSpace: 'xitter-community'
             };
           } else if (username.toLowerCase() === 'carol') {
@@ -68,7 +71,7 @@ const ProfilePage: React.FC = () => {
               id: 'carol',
               username: 'carol',
               displayName: 'Carol',
-              avatar: '/base192.jpg',
+              avatar: `${PUBLIC_URL}/base192.jpg`,
               homeSpace: 'xitter-community'
             };
           }
