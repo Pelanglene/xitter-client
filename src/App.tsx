@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Global, css } from '@emotion/react';
 import { UserProvider } from './context/UserContext';
 import { SpaceProvider } from './context/SpaceContext';
@@ -15,7 +15,7 @@ const basename = process.env.PUBLIC_URL || '';
 
 const App: React.FC = () => {
   return (
-    <Router basename={basename}>
+    <Router>
       <UserProvider>
         <SpaceProvider>
           <Global

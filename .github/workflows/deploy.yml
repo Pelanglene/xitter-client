@@ -37,9 +37,6 @@ jobs:
           CI: false
           PUBLIC_URL: https://pelanglene.github.io/xitter-client
       
-      - name: Copy 404.html
-        run: cp public/404.html build/
-      
       - name: Setup Pages
         uses: actions/configure-pages@v4
       
