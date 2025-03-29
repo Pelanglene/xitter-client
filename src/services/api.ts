@@ -4,6 +4,9 @@ import { Tweet, Space, User } from '../types';
 // Базовый URL API сервера
 const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080';
 
+// Получаем базовый URL для ресурсов
+const PUBLIC_URL = process.env.PUBLIC_URL || '';
+
 // Инстанс Axios с базовыми настройками
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
@@ -20,7 +23,7 @@ const xitterCommunityTweets: Tweet[] = [
     text: 'Добро пожаловать в Xitter Community! Это официальное пространство для всех пользователей Xitter.',
     username: 'Xitter',
     timestamp: 1675916490,
-    icon: '/logo192.png',
+    icon: `${PUBLIC_URL}/logo192.png`,
     home: 'https://xitter.example.com/community',
     sign: 'c9a5a0d1d1040985e49362aedb75bc9a',
     replies: []
@@ -31,7 +34,7 @@ const xitterCommunityTweets: Tweet[] = [
     text: 'Hello World! Я рада присоединиться к сообществу Xitter.',
     username: 'Alice',
     timestamp: 1675916590,
-    icon: '/alice192.jpg',
+    icon: `${PUBLIC_URL}/alice192.jpg`,
     home: 'https://xitter.example.com/users/alice',
     sign: 'a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6',
     replies: [
@@ -41,7 +44,7 @@ const xitterCommunityTweets: Tweet[] = [
         text: 'Привет, Alice! Добро пожаловать в Xitter!',
         username: 'Ben',
         timestamp: 1675916658,
-        icon: '/kapi192.jpg',
+        icon: `${PUBLIC_URL}/kapi192.jpg`,
         home: 'https://xitter.example.com/users/ben'
       }
     ]
@@ -52,7 +55,7 @@ const xitterCommunityTweets: Tweet[] = [
     text: 'Делюсь своими мыслями о новой платформе Xitter. Мне нравится концепция пространств!',
     username: 'Carol',
     timestamp: 1675917600,
-    icon: '/base192.jpg',
+    icon: `${PUBLIC_URL}/base192.jpg`,
     home: 'https://xitter.example.com/users/carol',
     sign: 'z9y8x7w6v5u4t3s2r1q0p9o8n7m6l5k4',
     replies: [
@@ -62,7 +65,7 @@ const xitterCommunityTweets: Tweet[] = [
         text: 'Согласен, пространства - это отличная идея!',
         username: 'Dave',
         timestamp: 1675917700,
-        icon: '/base192.jpg',
+        icon: `${PUBLIC_URL}/base192.jpg`,
         home: 'https://xitter.example.com/users/dave'
       },
       {
@@ -71,7 +74,7 @@ const xitterCommunityTweets: Tweet[] = [
         text: 'Спасибо за отзыв! Мы стараемся сделать Xitter лучше с каждым днем.',
         username: 'Xitter',
         timestamp: 1675917800,
-        icon: '/logo192.png',
+        icon: `${PUBLIC_URL}/logo192.png`,
         home: 'https://xitter.example.com/community'
       }
     ]
@@ -119,13 +122,13 @@ export const tweetsApi = {
     const username = localStorage.getItem('username') || 'user';
     
     // Определяем аватарку в зависимости от пользователя
-    let avatarPath = '/base192.jpg'; // По умолчанию используем base192.jpg
+    let avatarPath = `${PUBLIC_URL}/base192.jpg`; // По умолчанию используем base192.jpg
     if (username.toLowerCase() === 'alice') {
-      avatarPath = '/alice192.jpg';
+      avatarPath = `${PUBLIC_URL}/alice192.jpg`;
     } else if (username.toLowerCase() === 'ben') {
-      avatarPath = '/kapi192.jpg';
+      avatarPath = `${PUBLIC_URL}/kapi192.jpg`;
     } else if (username.toLowerCase() === 'xitter') {
-      avatarPath = '/logo192.png';
+      avatarPath = `${PUBLIC_URL}/logo192.png`;
     }
     
     const newTweet: Tweet = {
@@ -246,13 +249,13 @@ export const usersApi = {
     const storedUsername = localStorage.getItem('username') || 'user';
     
     // Определяем аватарку в зависимости от пользователя
-    let avatarPath = '/base192.jpg'; // По умолчанию используем base192.jpg
+    let avatarPath = `${PUBLIC_URL}/base192.jpg`; // По умолчанию используем base192.jpg
     if (storedUsername.toLowerCase() === 'alice') {
-      avatarPath = '/alice192.jpg';
+      avatarPath = `${PUBLIC_URL}/alice192.jpg`;
     } else if (storedUsername.toLowerCase() === 'ben') {
-      avatarPath = '/kapi192.jpg';
+      avatarPath = `${PUBLIC_URL}/kapi192.jpg`;
     } else if (storedUsername.toLowerCase() === 'xitter') {
-      avatarPath = '/logo192.png';
+      avatarPath = `${PUBLIC_URL}/logo192.png`;
     }
     
     return Promise.resolve({
@@ -277,13 +280,13 @@ export const usersApi = {
     if (!avatarPath) {
       const storedUsername = userData.username || localStorage.getItem('username') || 'user';
       if (storedUsername.toLowerCase() === 'alice') {
-        avatarPath = '/alice192.jpg';
+        avatarPath = `${PUBLIC_URL}/alice192.jpg`;
       } else if (storedUsername.toLowerCase() === 'ben') {
-        avatarPath = '/kapi192.jpg';
+        avatarPath = `${PUBLIC_URL}/kapi192.jpg`;
       } else if (storedUsername.toLowerCase() === 'xitter') {
-        avatarPath = '/logo192.png';
+        avatarPath = `${PUBLIC_URL}/logo192.png`;
       } else {
-        avatarPath = '/base192.jpg';
+        avatarPath = `${PUBLIC_URL}/base192.jpg`;
       }
     }
     

@@ -2,26 +2,29 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
+// Получаем базовый URL для ресурсов
+const PUBLIC_URL = process.env.PUBLIC_URL || '';
+
 interface LogoProps {
-    size?: 'small' | 'medium' | 'large';
-    showText?: boolean;
+  size?: 'small' | 'medium' | 'large';
+  showText?: boolean;
 }
 
 const Logo: React.FC<LogoProps> = ({ size = 'medium', showText = true }) => {
-    const getSize = () => {
-        switch (size) {
-            case 'small': return '24px';
-            case 'large': return '48px';
-            default: return '32px';
-        }
-    };
+  const getSize = () => {
+    switch (size) {
+      case 'small': return '24px';
+      case 'large': return '48px';
+      default: return '32px';
+    }
+  };
 
-    return (
-        <LogoContainer to="/">
-            <LogoImage src="/logo192.png" alt="Xitter Logo" size={getSize()} />
-            {showText && <LogoText>Xitter</LogoText>}
-        </LogoContainer>
-    );
+  return (
+    <LogoContainer to="/">
+      <LogoImage src={`${PUBLIC_URL}/logo192.png`} alt="Xitter Logo" size={getSize()} />
+      {showText && <LogoText>Xitter</LogoText>}
+    </LogoContainer>
+  );
 };
 
 const LogoContainer = styled(Link)`
