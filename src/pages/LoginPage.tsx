@@ -4,36 +4,39 @@ import styled from '@emotion/styled';
 import LoginForm from '../components/LoginForm';
 import { useUser } from '../context/UserContext';
 
+// Получаем базовый URL для ресурсов
+const PUBLIC_URL = process.env.PUBLIC_URL || '';
+
 const LoginPage: React.FC = () => {
-    const { user } = useUser();
-    const navigate = useNavigate();
+  const { user } = useUser();
+  const navigate = useNavigate();
 
-    // Если пользователь уже авторизован, перенаправляем на главную
-    useEffect(() => {
-        if (user) {
-            navigate('/');
-        }
-    }, [user, navigate]);
+  // Если пользователь уже авторизован, перенаправляем на главную
+  useEffect(() => {
+    if (user) {
+      navigate('/');
+    }
+  }, [user, navigate]);
 
-    return (
-        <PageContainer>
-            <BackgroundLayer />
+  return (
+    <PageContainer>
+      <BackgroundLayer />
 
-            <ContentContainer>
-                <LeftSection>
-                    <AppInfo>
-                        <AppLogo src="/logo512.png" alt="Xitter Logo" />
-                        <AppName>Xitter</AppName>
-                        <AppDescription>Новая социальная платформа с ориентацией на сообщества</AppDescription>
-                    </AppInfo>
-                </LeftSection>
+      <ContentContainer>
+        <LeftSection>
+          <AppInfo>
+            <AppLogo src={`${PUBLIC_URL}/logo512.png`} alt="Xitter Logo" />
+            <AppName>Xitter</AppName>
+            <AppDescription>Новая социальная платформа с ориентацией на сообщества</AppDescription>
+          </AppInfo>
+        </LeftSection>
 
-                <RightSection>
-                    <LoginForm />
-                </RightSection>
-            </ContentContainer>
-        </PageContainer>
-    );
+        <RightSection>
+          <LoginForm />
+        </RightSection>
+      </ContentContainer>
+    </PageContainer>
+  );
 };
 
 const PageContainer = styled.div`
